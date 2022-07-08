@@ -23,22 +23,22 @@ class WeatherApi {
 
   Future<WeatherForecastModel> fetchWeatherForecast(
       {String? cityName}) async {
-    
+
     Map<String, String> parameters;
     if (cityName!=null && cityName.isNotEmpty) {
       parameters = {
         'key': Constants.WEATHER_APP_ID,
         'q': cityName,
-        'days': '1',
+        'days': '10',
       };
     } else {
       UserLocation location = UserLocation();
-    await location.determinePosition();
+      await location.determinePosition();
       String fullLocation = '${location.latitude},${location.longitude}';
       parameters = {
         'key': Constants.WEATHER_APP_ID,
         'q': fullLocation,
-        'days': '1',
+        'days': '10',
       };
     }
 

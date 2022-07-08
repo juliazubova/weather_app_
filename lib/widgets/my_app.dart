@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weathet_app/ui/widgets/main_screen_model.dart';
-import 'package:weathet_app/ui/widgets/main_screen_widget.dart';
+import 'package:weathet_app/widgets/main_screen_model.dart';
+import 'package:weathet_app/widgets/main_screen_widget.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: ChangeNotifierProvider(
-          child: const MainScreenWidget(),
+          child: MainScreenWidget(), //
           create: (_) => MainScreenModel(),
           lazy: false,
         ),

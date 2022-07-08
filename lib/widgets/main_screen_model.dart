@@ -16,7 +16,7 @@ class MainScreenModel extends ChangeNotifier {
 
   Future<void> setup() async {
     _forecastObject ??=
-        await WeatherApi().fetchWeatherForecast(cityName: 'Omsk');
+    await WeatherApi().fetchWeatherForecast(cityName: 'Omsk');
     updateState();
   }
 
@@ -31,7 +31,7 @@ class MainScreenModel extends ChangeNotifier {
     if (cityName.isEmpty) return;
     updateState();
     _forecastObject =
-        await WeatherApi().fetchWeatherForecast(cityName: cityName);
+    await WeatherApi().fetchWeatherForecast(cityName: cityName);
     cityName = '';
     updateState();
   }

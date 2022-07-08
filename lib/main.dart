@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:weather_app/ui/widgets/my_app.dart';
+import 'package:weathet_app/widgets/my_app.dart';
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
