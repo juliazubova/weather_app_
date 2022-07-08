@@ -12,12 +12,12 @@ class RightNowWidget extends StatelessWidget {
     final snapshot = model.forecastObject;
     var city = snapshot!.location?.name;
     var temp = snapshot.current?.tempC!.round();
-    var feelTemp = snapshot.current?.feelslikeC;
+    var feelTemp = snapshot.current?.feelslikeC!.toInt();
     var condition = snapshot.current?.condition!.text;
     var url = 'https://${((snapshot.current!.condition!.icon).toString().substring(2)).replaceAll("64", "128")}';
 
     return Padding(
-      padding: EdgeInsets.only(left: 10),
+      padding: EdgeInsets.only(left: 15),
       child:
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,6 +30,7 @@ class RightNowWidget extends StatelessWidget {
               fontFamily: 'Montserrat',
             ),
           ),
+
           Text('$condition',
               textAlign: TextAlign.left,
               style: const TextStyle(

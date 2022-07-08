@@ -9,6 +9,8 @@ import 'package:weathet_app/widgets/indicators_widget.dart';
 import 'package:weathet_app/widgets/week_widget.dart';
 import 'package:weathet_app/utils/constants.dart';
 
+import 'package:carousel_slider/carousel_slider.dart';
+
 class MainScreenWidget extends StatelessWidget {
   const MainScreenWidget({Key? key}) : super(key: key);
 
@@ -45,12 +47,11 @@ class _ViewWidget extends StatelessWidget {
                     children: const [
                       SizedBox(height: 70),
                       RightNowWidget(),
-                      // SizedBox(height: 5),
-                      HourWidget(),
-                      SizedBox(height: 15),
                       IndicatorsWidget(),
-                      SizedBox(height: 15,),
+                      SizedBox(height: 15),
+                      HourWidget(),
                       WeekWidget(),
+                      SizedBox(height: 15,),
                     ]
                 )
               ] ,

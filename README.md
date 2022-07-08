@@ -10,7 +10,9 @@
 
 - данные о погоде на текущий момент;
 
-![img.png](assets/app_screen.png)
+![img_1.png](assets/app_screen.png)
+
+![img_2.png](assets/app_screen.png)
 
 Приложение выпонено студенткой группы МО-201 Зубовой Юлией в качестве задания по летней практике.
 

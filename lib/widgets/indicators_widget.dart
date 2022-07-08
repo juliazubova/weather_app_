@@ -10,71 +10,77 @@ class IndicatorsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.read<MainScreenModel>();
     final snapshot = model.forecastObject;
-    var windSpeed = snapshot!.current?.windKph;
-    var humidity = snapshot.current?.humidity;
-    var pressure = snapshot.current?.pressureMb;
+    var windSpeed = snapshot!.current?.windKph!.toInt();
+    var windDir = snapshot.current!.windDir!;
+    var visibility = snapshot.forecast!.forecastday![0].day!.avgvisKm;
+    var humidity = snapshot.current?.humidity!.toInt();
+    var pressure = snapshot.current?.pressureMb!.toInt();
     var uv = snapshot.current?.uv;
     var sunset = snapshot.forecast!.forecastday![0].astro!.sunset;
     var sunrise = snapshot.forecast!.forecastday![0].astro!.sunrise;
 
     return Padding(
-      padding: EdgeInsets.only(left: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Card(
-            color: bgGreyColor,
-            elevation: 0,
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(11)),
-            child: SizedBox(
-              width: double.maxFinite,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  customListTile(
-                    text: snapshot.current!.windDir!,
-                    first: 'Wind speed:',
-                    second: ' $windSpeed km/h',
-                    icon: Icons.arrow_circle_left_rounded,
-                    iconColor: Colors.blue,
-                  ),
-                  customListTile(
-                    first: 'Humidity:',
-                    second: ' $humidity %',
-                    icon: Icons.water_drop_outlined,
-                    iconColor: blueColor,
-                  ),
-                  customListTile(
-                    first: 'Pressure:',
-                    second: ' $pressure hPa',
-                    icon: Icons.speed,
-                    iconColor: Colors.red[300]!,
-                  ),
-                  customListTile(
-                    first: 'UV index:',
-                    second: ' $uv %',
-                    icon: Icons.light_mode_outlined,
-                    iconColor: orangeColor,
-                  ),
-                  customListTile(
-                    first: 'Sunrise:',
-                    second: ' $sunrise',
-                    icon: Icons.sunny,
-                    iconColor: pinkColor,
-                  ),
-                  customListTile(
-                    first: 'Sunset:',
-                    second: ' $sunset',
-                    icon: Icons.shield_moon_outlined,
-                    iconColor: purpleColor,
-                  ),
-                ],
-              ),
+        padding: EdgeInsets.only(left: 15),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.arrow_circle_right_rounded, size: 30, color: purpleColor),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('${windSpeed} km/h winds from the ${windDir}.', style: TextStyle(fontSize: 20)),
+                    Text('Visibility ${visibility} kilometers.', style: TextStyle(fontSize: 20)),
+                  ],
+                )
+              ],
             ),
-          ),
-        ],
-      ),
+            SizedBox(height: 5),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.water_drop, size: 30, color: blueColor),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Humidity ${humidity}%.', style: TextStyle(fontSize: 20)),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(height: 5),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.speed_rounded, size: 30, color: greenColor),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Pressure ${pressure} hPa.', style: TextStyle(fontSize: 20)),
+                  ],
+                )
+              ],
+            ),
+            SizedBox(height: 5),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.wb_twilight_outlined, size: 30, color: lightOrangeColor),
+                SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Sunrise ${sunrise} \u{2192} Sunset ${sunset}.', style: TextStyle(fontSize: 20)),
+                  ],
+                )
+              ],
+            ),
+          ],
+        )
     );
   }
 }
